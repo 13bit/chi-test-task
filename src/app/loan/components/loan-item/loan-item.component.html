@@ -1,1 +1,6 @@
-<p>loan-item works!</p>
+<div>
+  <h5>{{loan.title}}</h5>
+  <div>Amount: {{loan.amount}}</div>
+  <div>Available: {{loan.available}}</div>
+  <button (click)="invest(loan.id, 1000)">Invest</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoanService} from '../../loan.service';
 
 @Component({
   selector: 'app-investment-balance',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./investment-balance.component.css']
 })
 export class InvestmentBalanceComponent implements OnInit {
+  balance: number;
+  constructor(private loanService: LoanService) { }
 
-  constructor() { }
-
+  // TODO @@@dr add unsubscribe
   ngOnInit() {
+    this.loanService.availableBalance$.subscribe(balance => this.balance = balance);
   }
 
 }

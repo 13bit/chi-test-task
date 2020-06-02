@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Loan} from '../../models/loan';
+import {LoanService} from '../../loan.service';
 
 @Component({
   selector: 'app-loan-item',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoanItemComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  loan: Loan;
+
+  constructor(private loanService: LoanService) { }
 
   ngOnInit() {
+    // console.log('this >>', this.loan);
   }
 
+  invest(loanId: number, amount: number){
+    this.loanService.invest(loanId, amount);
+  }
 }

@@ -1,15 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoanContainerComponent } from './containers/loan-container/loan-container.component';
-import { LoanItemComponent } from './components/loan-item/loan-item.component';
-import { InvestmentBalanceComponent } from './components/investment-balance/investment-balance.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {InvestmentBalanceComponent} from './components/investment-balance/investment-balance.component';
+import {LoanListContainerComponent} from './containers/loan-list-container/loan-list-container.component';
+import {LoanItemComponent} from './components/loan-item/loan-item.component';
 
 
 @NgModule({
-  declarations: [LoanContainerComponent, LoanItemComponent, InvestmentBalanceComponent],
+  declarations: [
+    LoanListContainerComponent,
+    LoanItemComponent,
+    InvestmentBalanceComponent
+  ],
+  exports: [
+    LoanListContainerComponent
+  ],
   imports: [
     CommonModule
-  ]
+  ],
 })
-export class LoanModule { }
+export class LoanModule {
+}

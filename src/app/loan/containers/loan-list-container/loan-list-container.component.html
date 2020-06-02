@@ -1,0 +1,11 @@
+<div>
+  <h2>Current Loans</h2>
+
+  <ul *ngIf="loans.length">
+    <li *ngFor="let loan of loans">
+      <app-loan-item [loan]="loan"></app-loan-item>
+    </li>
+  </ul>
+
+  <app-investment-balance></app-investment-balance>
+</div>
