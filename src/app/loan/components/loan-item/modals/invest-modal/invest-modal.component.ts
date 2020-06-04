@@ -28,7 +28,9 @@ export class InvestModalComponent implements OnInit {
 
       return this.activeModal.close(this.loan);
     } catch (e) {
+      console.log('e>>',e);
       this.error = e;
+      console.log(this.error);
     }
   }
 

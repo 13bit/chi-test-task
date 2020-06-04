@@ -1,14 +1,31 @@
 <div class="modal-body">
-  <h3>Invest in Loan</h3>
-  <div>{{loan.title}}</div>
+  <div class="row invest-modal-header">
+    <div class="col-md-8">
+      <h3>Invest in Loan</h3>
+    </div>
+    <div class="col-md-8">
+      {{loan.title}}
+    </div>
+  </div>
 
-  <div>Amount available: {{loan.available | currency: 'GBP':'symbol':'3.0-0'}}</div>
-  <div>Loan ends in: {{loan.termRemaining | loanTimeEnd}}</div>
-
-  <div>
-    Investment amount(&#163;):
-    <input [(ngModel)]="investmentAmount" type="number">
-    <div *ngIf="error">{{error}}</div>
-    <button (click)="invest(investmentAmount)">Invest</button>
+  <div class="row invest-modal-content">
+    <div class="col-md-8">
+      Amount available: {{loan.available | currency: 'GBP':'symbol':'3.0-0'}}
+    </div>
+    <div class="col-md-8">
+      Loan ends in: {{loan.termRemaining | loanTimeEnd}}
+    </div>
+  </div>
+  <div class="row invest-modal-form">
+    <div class="col-md-12">
+      Investment amount(&#163;):
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" [(ngModel)]="investmentAmount" type="number">
+      <div class="form-error" *ngIf="error">{{error}}</div>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-warning invest-btn" (click)="invest(investmentAmount)">Invest</button>
+    </div>
   </div>
 </div>

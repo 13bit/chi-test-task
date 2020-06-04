@@ -1,0 +1,20 @@
+.invest-modal-header {
+  margin-bottom: 1rem;
+}
+
+.invest-modal-content {
+  margin-bottom: 1rem;
+
+}
+
+.invest-modal-form {
+  margin-bottom: 1rem;
+}
+
+.form-error {
+  color: #dc3545;
+}
+
+.invest-btn {
+  width: 100%;
+}
