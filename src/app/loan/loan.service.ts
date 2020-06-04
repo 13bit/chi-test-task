@@ -25,16 +25,30 @@ export class LoanService {
     return of(this.loans.find((item) => item.id === id));
   }
 
-  invest(loanId, amount: number) {
-    this.loans = this.loans.map((loan) => {
-      if (loan.id === loanId) {
-        loan.available -= amount;
+  invest(loanId, amount: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+        const updatedLoan = this.loans.find((loan) => loan.id === loanId);
+
+        if (updatedLoan.available < amount) {
+          return reject('Not enough available amount in Loan');
+        }
+        updatedLoan.available -= amount;
+
+
+        this.loans = this.loans.map((loan) => {
+          if (loan.id === updatedLoan.id) {
+            loan = updatedLoan;
+          }
+
+          return loan;
+        });
+
+        this.calculateAvailableBalance();
+
+        resolve();
       }
+    );
 
-      return loan;
-    });
-
-    this.calculateAvailableBalance();
   }
 
   calculateAvailableBalance(): void {

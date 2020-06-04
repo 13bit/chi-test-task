@@ -1,1 +1,4 @@
-<div>Total amount available for investment: {{balance}}</div>
+<div>
+  Total amount available for investment:
+  <span>{{balance | currency: 'GBP':'symbol':'3.0-0' }}</span>
+</div>

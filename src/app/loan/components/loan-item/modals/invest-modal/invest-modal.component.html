@@ -1,0 +1,14 @@
+<div class="modal-body">
+  <h3>Invest in Loan</h3>
+  <div>{{loan.title}}</div>
+
+  <div>Amount available: {{loan.available | currency: 'GBP':'symbol':'3.0-0'}}</div>
+  <div>Loan ends in: {{loan.termRemaining | loanTimeEnd}}</div>
+
+  <div>
+    Investment amount(&#163;):
+    <input [(ngModel)]="investmentAmount" type="number">
+    <div *ngIf="error">{{error}}</div>
+    <button (click)="invest(investmentAmount)">Invest</button>
+  </div>
+</div>

@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Loan} from '../../models/loan';
 import {LoanService} from '../../loan.service';
+import {InvestModalComponent} from './modals/invest-modal/invest-modal.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-loan-item',
@@ -12,13 +14,26 @@ export class LoanItemComponent implements OnInit {
   @Input()
   loan: Loan;
 
-  constructor(private loanService: LoanService) { }
+  @Output()
+  invested: EventEmitter<Loan> = new EventEmitter<Loan>();
 
-  ngOnInit() {
-    // console.log('this >>', this.loan);
+  constructor(private loanService: LoanService, private modalService: NgbModal) {
   }
 
-  invest(loanId: number, amount: number){
-    this.loanService.invest(loanId, amount);
+  ngOnInit() {
+  }
+
+  invest() {
+    const modalRef = this.modalService.open(InvestModalComponent);
+    modalRef.componentInstance.loan = this.loan;
+
+    modalRef.result.then(
+      (investedLoan) => {
+        investedLoan.isInvested = true;
+        this.loan = investedLoan;
+        this.invested.emit(investedLoan);
+      },
+      (reason) => reason
+    );
   }
 }

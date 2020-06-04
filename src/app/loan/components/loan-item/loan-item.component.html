@@ -1,6 +1,7 @@
 <div>
   <h5>{{loan.title}}</h5>
+  <div *ngIf="loan.isInvested">Invested</div>
   <div>Amount: {{loan.amount}}</div>
   <div>Available: {{loan.available}}</div>
-  <button (click)="invest(loan.id, 1000)">Invest</button>
+  <button (click)="invest()">Invest</button>
 </div>
