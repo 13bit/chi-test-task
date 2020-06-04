@@ -1,7 +1,15 @@
-<div>
-  <h5>{{loan.title}}</h5>
-  <div *ngIf="loan.isInvested">Invested</div>
-  <div>Amount: {{loan.amount}}</div>
-  <div>Available: {{loan.available}}</div>
-  <button (click)="invest()">Invest</button>
+<div class="row">
+  <div class="col-md-12">
+    <h5>{{loan.title}}</h5>
+  </div>
+  <div class="col-md-8">
+    <div *ngIf="loan.isInvested">Invested</div>
+    <div>Amount: {{loan.amount | currency: 'GBP':'symbol':'3.0-0'}}</div>
+    <div>Available: {{loan.available | currency: 'GBP':'symbol':'3.0-0'}}</div>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-warning float-right" (click)="invest()">Invest</button>
+
+  </div>
+
 </div>

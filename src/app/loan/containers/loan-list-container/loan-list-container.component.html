@@ -1,11 +1,16 @@
-<div>
-  <h2>Current Loans</h2>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="row loan-header">
+      <h2 class="loan-header-color font-weight-bold">Current Loans</h2>
+    </div>
 
-  <ul *ngIf="loans.length">
-    <li *ngFor="let loan of loans">
-      <app-loan-item [loan]="loan"></app-loan-item>
-    </li>
-  </ul>
+    <ul *ngIf="loans.length" class="list-group">
+      <li *ngFor="let loan of loans" class="list-group-item loan-item">
+        <app-loan-item [loan]="loan"></app-loan-item>
+      </li>
+    </ul>
 
-  <app-investment-balance></app-investment-balance>
+    <app-investment-balance></app-investment-balance>
+
+  </div>
 </div>
